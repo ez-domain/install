@@ -32,6 +32,17 @@ curl -fsSL https://raw.githubusercontent.com/ez-domain/install/main/install.sh |
 | Linux | amd64 |
 | Linux | arm64 |
 
+## Ports used
+
+ezdomain binds the following ports on your machine:
+
+| Port | Protocol | Purpose |
+|------|----------|---------|
+| 80   | TCP      | HTTP → HTTPS redirect |
+| 443  | TCP      | HTTPS reverse proxy for your aliases |
+
+Make sure nothing else (nginx, Apache, another dev server) is already listening on ports 80 or 443 before installing.
+
 ## After install
 
 Open **https://ezdomain.dev** in your browser to manage domain aliases.
@@ -45,7 +56,7 @@ sudo ezdomain start     # start the service
 ## Uninstall
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/ez-domain/install/main/uninstall.sh | sh
+sudo ezdomain uninstall
 ```
 
 Removes the service, untrusts the CA, and deletes the binary.
