@@ -7,25 +7,20 @@ INSTALL_DIR="/usr/local/bin"
 
 # Defaults
 TAG=""
-AUTO_START=0
 
 usage() {
   echo "Usage: install.sh [OPTIONS]"
   echo ""
   echo "Options:"
   echo "  --version <tag>   Install a specific version (e.g. v0.1.0). Defaults to latest."
-  echo "  --auto-start      Start the ezdomain service immediately after install."
   echo "  --help, -h        Show this help message."
   echo ""
   echo "Examples:"
   echo "  # Install latest version"
-  echo "  curl -fsSL https://raw.githubusercontent.com/$REPO/main/install.sh | sh"
+  echo "  curl -fsSL https://raw.githubusercontent.com/ez-domain/install/main/install.sh | sh"
   echo ""
   echo "  # Install specific version"
-  echo "  curl -fsSL https://raw.githubusercontent.com/$REPO/main/install.sh | sh -s -- --version v0.1.0"
-  echo ""
-  echo "  # Install latest and start service immediately"
-  echo "  curl -fsSL https://raw.githubusercontent.com/$REPO/main/install.sh | sh -s -- --auto-start"
+  echo "  curl -fsSL https://raw.githubusercontent.com/ez-domain/install/main/install.sh | sh -s -- --version v0.1.0"
 }
 
 # Parse arguments
@@ -34,10 +29,6 @@ while [ $# -gt 0 ]; do
     --version)
       TAG="$2"
       shift 2
-      ;;
-    --auto-start)
-      AUTO_START=1
-      shift
       ;;
     --help|-h)
       usage
@@ -110,12 +101,6 @@ sudo mv "/tmp/$BIN" "$INSTALL_DIR/$BIN"
 echo ""
 echo "Setting up ezdomain (you may be asked for your password to trust the local CA)..."
 sudo "$INSTALL_DIR/$BIN" install
-
-if [ "$AUTO_START" = "1" ]; then
-  echo ""
-  echo "Starting ezdomain service..."
-  sudo "$INSTALL_DIR/$BIN" start
-fi
 
 echo ""
 echo "ezdomain $TAG installed successfully."
