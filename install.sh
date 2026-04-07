@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-REPO="ansori34/ezdomain"
+REPO="ez-domain/install"
 BIN="ezdomain"
 INSTALL_DIR="/usr/local/bin"
 
