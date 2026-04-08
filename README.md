@@ -79,10 +79,16 @@ ezdomain binds the following ports on your machine:
 ## After Install
 
 ```sh
-sudo ezdomain status     # check service status and diagnostics
-sudo ezdomain stop       # stop the service
-sudo ezdomain start      # start the service
-sudo ezdomain trust      # re-trust the CA if your browser shows a cert error
+sudo ezdomain completion    # Generate the autocompletion script for the specified shell
+sudo ezdomain help          # Help about any command
+sudo ezdomain install       # Generate CA, trust it system-wide, and install the service
+sudo ezdomain reinstall     # Uninstall, wipe config, and do a fresh install
+sudo ezdomain reset         # Clear all domain aliases (service keeps running)
+sudo ezdomain serve         # Run in the foreground (Ctrl+C to stop)
+sudo ezdomain start         # Start the service
+sudo ezdomain status        # Show service status and diagnostics
+sudo ezdomain stop          # Stop the service
+sudo ezdomain trust         # Install the local CA into the system trust store (re-run if browser shows cert error)
 ```
 
 ---
