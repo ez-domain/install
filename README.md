@@ -10,6 +10,7 @@
 [![Linux](https://img.shields.io/badge/Linux-arm64%20%7C%20amd64-orange?logo=linux&logoColor=white)](https://github.com/ez-domain/install/releases/latest)
 [![Windows](https://img.shields.io/badge/Windows-x64-blue?logo=windows)](https://github.com/ez-domain/install/releases/latest)
 [![Latest Release](https://img.shields.io/github/v/release/ez-domain/install?label=latest&color=brightgreen)](https://github.com/ez-domain/install/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/ez-domain/install/total?label=downloads)](https://github.com/ez-domain/install/releases)
 
 </div>
 
@@ -76,7 +77,7 @@ ezdomain binds the following ports on your machine:
 
 ---
 
-## After Install
+## Commands
 
 ```sh
 sudo ezdomain completion    # Generate the autocompletion script for the specified shell
@@ -89,6 +90,7 @@ sudo ezdomain start         # Start the service
 sudo ezdomain status        # Show service status and diagnostics
 sudo ezdomain stop          # Stop the service
 sudo ezdomain trust         # Install the local CA into the system trust store (re-run if browser shows cert error)
+sudo ezdomain update        # Check for a newer version and update the binary
 ```
 
 ---
