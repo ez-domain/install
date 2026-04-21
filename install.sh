@@ -141,12 +141,22 @@ fi
 chmod +x "/tmp/$BIN"
 success "Download complete"
 
+if [ "$(id -u)" -eq 0 ]; then
+  SUDO=""
+else
+  SUDO="sudo"
+fi
+
 step "Installing..."
-info "Moving to $INSTALL_DIR/$BIN (requires sudo)"
-sudo mv "/tmp/$BIN" "$INSTALL_DIR/$BIN"
+if [ -n "$SUDO" ]; then
+  info "Moving to $INSTALL_DIR/$BIN (requires sudo)"
+else
+  info "Moving to $INSTALL_DIR/$BIN"
+fi
+$SUDO mv "/tmp/$BIN" "$INSTALL_DIR/$BIN"
 success "Binary installed"
 
 step "Setting up..."
-warn "You may be asked for your password to trust the local CA"
+[ -n "$SUDO" ] && warn "You may be asked for your password to trust the local CA"
 printf "\n  ${ORANGE}▶ ezdomain${RESET}\n"
-sudo "$INSTALL_DIR/$BIN" install
+$SUDO "$INSTALL_DIR/$BIN" install
